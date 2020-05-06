@@ -1,14 +1,10 @@
-
-
- class Post < ActiveRecord::Base
+class Post < ActiveRecord::Base
  
   belongs_to :author
   validate :is_title_case
  
-  before_validation :make_title_case
- 
   # New Code!!
-  before_save :email_author_about_post
+  before_validation :make_title_case
  
   private
  
@@ -18,13 +14,7 @@
     end
   end
  
-  def email_author_about_post
-    # Not implemented.
-    # For more information: https://guides.rubyonrails.org/action_mailer_basics.html
-  end
- 
   def make_title_case
     self.title = self.title.titlecase
   end
-end
 end
